@@ -1,0 +1,73 @@
+[
+  {"model": "users.pole", "pk": 1, "fields": {"code_pole": "PAT", "nom_pole": "Patrimoine", "responsable_pole": "Claire Martin"}},
+  {"model": "users.pole", "pk": 2, "fields": {"code_pole": "TEC", "nom_pole": "Technique", "responsable_pole": "Nicolas Bernard"}},
+  {"model": "users.pole", "pk": 3, "fields": {"code_pole": "ENV", "nom_pole": "Environnement", "responsable_pole": "Sophie Laurent"}},
+  {"model": "users.pole", "pk": 4, "fields": {"code_pole": "FIN", "nom_pole": "Finances", "responsable_pole": "Julien Moreau"}},
+  {"model": "users.pole", "pk": 5, "fields": {"code_pole": "NUM", "nom_pole": "Numérique", "responsable_pole": "Emma Roussel"}},
+
+  {"model": "users.service", "pk": 1, "fields": {"pole": 1, "nom_service": "Gestion des bâtiments"}},
+  {"model": "users.service", "pk": 2, "fields": {"pole": 2, "nom_service": "Maintenance et travaux"}},
+  {"model": "users.service", "pk": 3, "fields": {"pole": 3, "nom_service": "Transition énergétique"}},
+  {"model": "users.service", "pk": 4, "fields": {"pole": 4, "nom_service": "Pilotage budgétaire"}},
+  {"model": "users.service", "pk": 5, "fields": {"pole": 5, "nom_service": "Systèmes d'information"}},
+
+  {"model": "users.agent", "pk": 1, "fields": {"nom_complet": "Alice Dupont", "email": "alice.dupont@gestibat.local", "statut": "Titulaire"}},
+  {"model": "users.agent", "pk": 2, "fields": {"nom_complet": "Bruno Chevalier", "email": "bruno.chevalier@gestibat.local", "statut": "Titulaire"}},
+  {"model": "users.agent", "pk": 3, "fields": {"nom_complet": "Carine Petit", "email": "carine.petit@gestibat.local", "statut": "Remplaçant"}},
+  {"model": "users.agent", "pk": 4, "fields": {"nom_complet": "Damien Leclerc", "email": "damien.leclerc@gestibat.local", "statut": "Vacataire"}},
+  {"model": "users.agent", "pk": 5, "fields": {"nom_complet": "Elise Fontaine", "email": "elise.fontaine@gestibat.local", "statut": "Titulaire"}},
+
+  {"model": "users.agentservice", "pk": 1, "fields": {"agent": 1, "service": 1, "role_dans_service": "Cheffe de service"}},
+  {"model": "users.agentservice", "pk": 2, "fields": {"agent": 2, "service": 2, "role_dans_service": "Technicien principal"}},
+  {"model": "users.agentservice", "pk": 3, "fields": {"agent": 3, "service": 3, "role_dans_service": "Chargée énergie"}},
+  {"model": "users.agentservice", "pk": 4, "fields": {"agent": 4, "service": 2, "role_dans_service": "Intervenant maintenance"}},
+  {"model": "users.agentservice", "pk": 5, "fields": {"agent": 5, "service": 5, "role_dans_service": "Référente applicative"}},
+
+  {"model": "patrimoine.site", "pk": 1, "fields": {"nom_site": "Hôtel communautaire", "adresse": "12 Rue de la République", "ville": "Montfleur"}},
+  {"model": "patrimoine.site", "pk": 2, "fields": {"nom_site": "Pôle technique Nord", "adresse": "8 Avenue des Tilleuls", "ville": "Montfleur"}},
+  {"model": "patrimoine.site", "pk": 3, "fields": {"nom_site": "Médiathèque intercommunale", "adresse": "3 Place du Marché", "ville": "Bellecombe"}},
+  {"model": "patrimoine.site", "pk": 4, "fields": {"nom_site": "Maison de santé", "adresse": "44 Rue des Écoles", "ville": "Valbois"}},
+  {"model": "patrimoine.site", "pk": 5, "fields": {"nom_site": "Centre aquatique", "adresse": "19 Allée des Sports", "ville": "Rivemont"}},
+
+  {"model": "patrimoine.batiment", "pk": 1, "fields": {"site": 1, "nom_batiment": "Bâtiment administratif A", "code_patrimoine": "BAT-ADM-A", "surface_m2": "1850.50", "annee_construction": 1998}},
+  {"model": "patrimoine.batiment", "pk": 2, "fields": {"site": 2, "nom_batiment": "Atelier maintenance", "code_patrimoine": "BAT-ATM-01", "surface_m2": "920.00", "annee_construction": 2005}},
+  {"model": "patrimoine.batiment", "pk": 3, "fields": {"site": 3, "nom_batiment": "Médiathèque", "code_patrimoine": "BAT-MED-01", "surface_m2": "1320.75", "annee_construction": 2012}},
+  {"model": "patrimoine.batiment", "pk": 4, "fields": {"site": 4, "nom_batiment": "Maison de santé principale", "code_patrimoine": "BAT-SAN-01", "surface_m2": "1450.00", "annee_construction": 2016}},
+  {"model": "patrimoine.batiment", "pk": 5, "fields": {"site": 5, "nom_batiment": "Halle bassin", "code_patrimoine": "BAT-AQU-01", "surface_m2": "2650.40", "annee_construction": 2010}},
+
+  {"model": "patrimoine.batimentcaracteristiquestech", "pk": 1, "fields": {"type_usage": "Administratif", "est_classe": false, "potentiel_photovoltaique": "Élevé", "zone_dangereuse": "Non", "reseau_chaleur": true, "etiquette_energetique": "C", "architecte": "Cabinet Durand", "derniere_renovation_date": "2022-09-15"}},
+  {"model": "patrimoine.batimentcaracteristiquestech", "pk": 2, "fields": {"type_usage": "Technique", "est_classe": false, "potentiel_photovoltaique": "Moyen", "zone_dangereuse": "Atelier", "reseau_chaleur": false, "etiquette_energetique": "D", "architecte": "Atelier Rivière", "derniere_renovation_date": "2021-06-10"}},
+  {"model": "patrimoine.batimentcaracteristiquestech", "pk": 3, "fields": {"type_usage": "Culturel", "est_classe": true, "potentiel_photovoltaique": "Faible", "zone_dangereuse": "Non", "reseau_chaleur": true, "etiquette_energetique": "B", "architecte": "Studio Laroche", "derniere_renovation_date": "2023-03-08"}},
+  {"model": "patrimoine.batimentcaracteristiquestech", "pk": 4, "fields": {"type_usage": "Santé", "est_classe": false, "potentiel_photovoltaique": "Moyen", "zone_dangereuse": "Radiologie", "reseau_chaleur": false, "etiquette_energetique": "C", "architecte": "Cabinet Sillage", "derniere_renovation_date": "2024-01-20"}},
+  {"model": "patrimoine.batimentcaracteristiquestech", "pk": 5, "fields": {"type_usage": "Sport", "est_classe": false, "potentiel_photovoltaique": "Élevé", "zone_dangereuse": "Traitement eau", "reseau_chaleur": false, "etiquette_energetique": "D", "architecte": "ArchiSport", "derniere_renovation_date": "2022-11-02"}},
+
+  {"model": "patrimoine.batimentservice", "pk": 1, "fields": {"batiment": 1, "service": 1, "pourcentage_occupation": "70.00"}},
+  {"model": "patrimoine.batimentservice", "pk": 2, "fields": {"batiment": 2, "service": 2, "pourcentage_occupation": "95.00"}},
+  {"model": "patrimoine.batimentservice", "pk": 3, "fields": {"batiment": 3, "service": 1, "pourcentage_occupation": "40.00"}},
+  {"model": "patrimoine.batimentservice", "pk": 4, "fields": {"batiment": 4, "service": 3, "pourcentage_occupation": "60.00"}},
+  {"model": "patrimoine.batimentservice", "pk": 5, "fields": {"batiment": 5, "service": 3, "pourcentage_occupation": "50.00"}},
+
+  {"model": "energie.compteur", "pk": 1, "fields": {"batiment": 1, "reference_fournisseur": "EDF-ADM-001", "type_fluide": "Électricité"}},
+  {"model": "energie.compteur", "pk": 2, "fields": {"batiment": 2, "reference_fournisseur": "ENG-ATM-002", "type_fluide": "Gaz"}},
+  {"model": "energie.compteur", "pk": 3, "fields": {"batiment": 3, "reference_fournisseur": "EAU-MED-003", "type_fluide": "Eau"}},
+  {"model": "energie.compteur", "pk": 4, "fields": {"batiment": 4, "reference_fournisseur": "RCH-SAN-004", "type_fluide": "Réseau de chaleur"}},
+  {"model": "energie.compteur", "pk": 5, "fields": {"batiment": 5, "reference_fournisseur": "EDF-AQU-005", "type_fluide": "Électricité"}},
+
+  {"model": "energie.consommationfluide", "pk": 1, "fields": {"compteur": 1, "periode_mensuelle": "2026-01-01", "valeur_index": "12345.60", "montant_ttc_facture": "980.45"}},
+  {"model": "energie.consommationfluide", "pk": 2, "fields": {"compteur": 2, "periode_mensuelle": "2026-01-01", "valeur_index": "8744.20", "montant_ttc_facture": "640.10"}},
+  {"model": "energie.consommationfluide", "pk": 3, "fields": {"compteur": 3, "periode_mensuelle": "2026-01-01", "valeur_index": "4330.55", "montant_ttc_facture": "210.30"}},
+  {"model": "energie.consommationfluide", "pk": 4, "fields": {"compteur": 4, "periode_mensuelle": "2026-01-01", "valeur_index": "5622.00", "montant_ttc_facture": "730.00"}},
+  {"model": "energie.consommationfluide", "pk": 5, "fields": {"compteur": 5, "periode_mensuelle": "2026-01-01", "valeur_index": "15440.10", "montant_ttc_facture": null}},
+
+  {"model": "travaux.investissement", "pk": 1, "fields": {"batiment": 1, "service_pilote": 4, "titre_projet": "Rénovation thermique bâtiment A", "type_investissement": "Performance énergétique", "annee_programmation": 2026, "budget_estime": "420000.00", "cout_reel": null, "statut": "Validé", "priorite_strategique": "Très élevée"}},
+  {"model": "travaux.investissement", "pk": 2, "fields": {"batiment": 2, "service_pilote": 2, "titre_projet": "Extension atelier maintenance", "type_investissement": "Extension", "annee_programmation": 2027, "budget_estime": "260000.00", "cout_reel": null, "statut": "Proposition", "priorite_strategique": "Élevée"}},
+  {"model": "travaux.investissement", "pk": 3, "fields": {"batiment": 3, "service_pilote": 1, "titre_projet": "Réaménagement espaces publics", "type_investissement": "Modernisation", "annee_programmation": 2026, "budget_estime": "185000.00", "cout_reel": "172500.00", "statut": "Engagé", "priorite_strategique": "Moyenne"}},
+  {"model": "travaux.investissement", "pk": 4, "fields": {"batiment": 4, "service_pilote": 3, "titre_projet": "Mise en conformité accessibilité", "type_investissement": "Conformité", "annee_programmation": 2025, "budget_estime": "95000.00", "cout_reel": "98200.00", "statut": "Terminé", "priorite_strategique": "Élevée"}},
+  {"model": "travaux.investissement", "pk": 5, "fields": {"batiment": 5, "service_pilote": 3, "titre_projet": "Optimisation traitement air", "type_investissement": "Qualité environnementale", "annee_programmation": 2026, "budget_estime": "310000.00", "cout_reel": null, "statut": "Validé", "priorite_strategique": "Très élevée"}},
+
+  {"model": "travaux.travaux", "pk": 1, "fields": {"batiment": 1, "service_demandeur": 1, "investissement": 1, "domaine_metier": "Bâtiment", "titre_travaux": "Isolation toiture zone nord", "type_travaux": "Amélioration", "priorite": "Haute", "date_demande": "2026-02-15", "date_fin_previsionnelle": "2026-06-30", "date_fin_reelle": null, "responsable_interne": 1, "intervenant_externe": "SARL ThermiPro", "statut": "Planifié"}},
+  {"model": "travaux.travaux", "pk": 2, "fields": {"batiment": 2, "service_demandeur": 2, "investissement": 2, "domaine_metier": "Voirie", "titre_travaux": "Réfection accès poids lourds", "type_travaux": "Entretien", "priorite": "Moyenne", "date_demande": "2026-01-20", "date_fin_previsionnelle": "2026-04-15", "date_fin_reelle": null, "responsable_interne": 2, "intervenant_externe": "EuroVoirie", "statut": "En étude"}},
+  {"model": "travaux.travaux", "pk": 3, "fields": {"batiment": 3, "service_demandeur": 1, "investissement": 3, "domaine_metier": "DSI", "titre_travaux": "Modernisation réseau wifi", "type_travaux": "Amélioration", "priorite": "Haute", "date_demande": "2026-03-01", "date_fin_previsionnelle": "2026-05-20", "date_fin_reelle": null, "responsable_interne": 5, "intervenant_externe": "NetInfra Conseil", "statut": "En cours"}},
+  {"model": "travaux.travaux", "pk": 4, "fields": {"batiment": 4, "service_demandeur": 3, "investissement": 4, "domaine_metier": "Bâtiment", "titre_travaux": "Remplacement portes coupe-feu", "type_travaux": "Urgence", "priorite": "Critique", "date_demande": "2026-01-05", "date_fin_previsionnelle": "2026-02-10", "date_fin_reelle": "2026-02-08", "responsable_interne": 3, "intervenant_externe": "SécuriBat", "statut": "Clos"}},
+  {"model": "travaux.travaux", "pk": 5, "fields": {"batiment": 5, "service_demandeur": 3, "investissement": 5, "domaine_metier": "Espaces Verts", "titre_travaux": "Reprise végétalisation abords", "type_travaux": "Entretien", "priorite": "Basse", "date_demande": "2026-02-28", "date_fin_previsionnelle": "2026-07-30", "date_fin_reelle": null, "responsable_interne": null, "intervenant_externe": "Paysage Horizon", "statut": "À lancer"}}
+]

@@ -1,0 +1,380 @@
+{
+  "info": {
+    "name": "GestiBat API - Patrimoine",
+    "description": "Collection API Patrimoine GestiBat - Test complet de tous les endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12345"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  var jsonData = pm.response.json();",
+                  "  pm.environment.set('access_token', jsonData.access);",
+                  "  pm.environment.set('refresh_token', jsonData.refresh);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"admin\", \"password\": \"admin123\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "Login Lecteur",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  var jsonData = pm.response.json();",
+                  "  pm.environment.set('access_token', jsonData.access);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"username\": \"lecteur\", \"password\": \"lect123\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sites",
+      "item": [
+        {
+          "name": "List all sites",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/sites/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "sites", ""]
+            }
+          }
+        },
+        {
+          "name": "List sites by ville (Ambert)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/sites/?ville=Ambert",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "sites", ""],
+              "query": [
+                {
+                  "key": "ville",
+                  "value": "Ambert"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search sites (piscine)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/sites/?search=piscine",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "sites", ""],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "piscine"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get site detail (ID=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/sites/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "sites", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bâtiments",
+      "item": [
+        {
+          "name": "List all buildings",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""]
+            }
+          }
+        },
+        {
+          "name": "Filter by site (site=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?site=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "site",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter by type_usage",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?type_usage=Administratif",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "type_usage",
+                  "value": "Administratif"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter by ville",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?ville=Ambert",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "ville",
+                  "value": "Ambert"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search buildings (mairie)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?search=mairie",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "mairie"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Sort by nom_batiment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?ordering=nom_batiment",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "ordering",
+                  "value": "nom_batiment"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Sort by surface_m2 (desc)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/?ordering=-surface_m2",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", ""],
+              "query": [
+                {
+                  "key": "ordering",
+                  "value": "-surface_m2"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get building detail (ID=1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/batiments/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "batiments", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statistiques",
+      "item": [
+        {
+          "name": "Get patrimoine stats (no auth)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/patrimoine/stats/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "patrimoine", "stats", ""]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refresh_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

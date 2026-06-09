@@ -1,0 +1,40 @@
+﻿services:
+  db:
+    image: postgres:16
+    container_name: gestibat-db
+    environment:
+      POSTGRES_DB: gestibat
+      POSTGRES_USER: gestibat
+      POSTGRES_PASSWORD: gestibat
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    container_name: gestibat-backend
+    env_file:
+      - ./backend/.env.example
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: gestibat-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  db_data:

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "Inter", sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background-color: #d9d9d9;
+  }
+}
+
+@layer components {
+  .gb-input {
+    border: 1px solid rgb(203, 213, 225);
+    background-color: white;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border-radius: 15px;
+  }
+
+  .gb-input:focus {
+    border-color: #007179;
+  }
+}

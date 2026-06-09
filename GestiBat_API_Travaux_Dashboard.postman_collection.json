@@ -1,0 +1,387 @@
+{
+  "info": {
+    "name": "GestiBat API - Travaux & Dashboard",
+    "description": "Collection API Travaux et Dashboard GestiBat",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Travaux",
+      "item": [
+        {
+          "name": "List all travaux",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", ""]
+            }
+          }
+        },
+        {
+          "name": "List travaux by statut",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/?statut=En cours",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", ""],
+              "query": [
+                {
+                  "key": "statut",
+                  "value": "En cours"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List travaux by batiment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/?batiment=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", ""],
+              "query": [
+                {
+                  "key": "batiment",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List travaux by domaine_metier",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/?domaine_metier=Bâtiment",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", ""],
+              "query": [
+                {
+                  "key": "domaine_metier",
+                  "value": "Bâtiment"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get travaux detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Create travaux",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batiment\": 1,\n  \"service_demandeur\": 1,\n  \"domaine_metier\": \"Bâtiment\",\n  \"titre_travaux\": \"Nouveau travail test\",\n  \"type_travaux\": \"Entretien\",\n  \"priorite\": \"Moyenne\",\n  \"date_demande\": \"2026-06-04\",\n  \"date_fin_previsionnelle\": \"2026-07-04\",\n  \"statut\": \"Proposé\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", ""]
+            }
+          }
+        },
+        {
+          "name": "Update travaux",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batiment\": 1,\n  \"service_demandeur\": 1,\n  \"domaine_metier\": \"Bâtiment\",\n  \"titre_travaux\": \"Travaux modifiés\",\n  \"type_travaux\": \"Amélioration\",\n  \"priorite\": \"Haute\",\n  \"date_demande\": \"2026-06-04\",\n  \"date_fin_previsionnelle\": \"2026-08-04\",\n  \"statut\": \"Validé\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Cloturer travaux",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/1/cloturer/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", "1", "cloturer", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete travaux",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/travaux/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "travaux", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Investissements",
+      "item": [
+        {
+          "name": "List all investissements",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", ""]
+            }
+          }
+        },
+        {
+          "name": "List by statut",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/?statut=Validé",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", ""],
+              "query": [
+                {
+                  "key": "statut",
+                  "value": "Validé"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List by annee_programmation",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/?annee_programmation=2026",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", ""],
+              "query": [
+                {
+                  "key": "annee_programmation",
+                  "value": "2026"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get investissement detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Create investissement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batiment\": 1,\n  \"service_pilote\": 1,\n  \"titre_projet\": \"Nouveau projet test\",\n  \"type_investissement\": \"Renovation energetique\",\n  \"annee_programmation\": 2026,\n  \"budget_estime\": \"150000.00\",\n  \"statut\": \"Proposition\",\n  \"priorite_strategique\": \"Haute\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", ""]
+            }
+          }
+        },
+        {
+          "name": "Update investissement",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batiment\": 1,\n  \"service_pilote\": 1,\n  \"titre_projet\": \"Projet modifié\",\n  \"type_investissement\": \"Mise aux normes\",\n  \"annee_programmation\": 2026,\n  \"budget_estime\": \"200000.00\",\n  \"statut\": \"Validé\",\n  \"priorite_strategique\": \"Strategique\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", "1", ""]
+            }
+          }
+        },
+        {
+          "name": "Delete investissement",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/travaux/investissements/1/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "travaux", "investissements", "1", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/dashboard/",
+              "host": ["{{base_url}}"],
+              "path": ["api", "dashboard", ""]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
