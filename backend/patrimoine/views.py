@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from users.permissions import IsAdminUser
+from travaux.pagination import StandardResultsPagination
 
 from .models import Batiment, Site
 from .serializers import (
@@ -19,6 +20,7 @@ class SiteViewSet(viewsets.ModelViewSet):
     queryset = Site.objects.all().order_by("nom_site")
     filter_backends = [filters.SearchFilter]
     search_fields = ["nom_site"]
+    pagination_class = StandardResultsPagination
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -44,6 +46,7 @@ class BatimentViewSet(viewsets.ModelViewSet):
     search_fields = ["nom_batiment", "code_patrimoine", "site__nom_site"]
     ordering_fields = ["nom_batiment", "surface_m2", "annee_construction", "code_patrimoine"]
     ordering = ["nom_batiment"]
+    pagination_class = StandardResultsPagination
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
