@@ -13,10 +13,12 @@ from users.permissions import IsAdminUser
 
 from .models import Investissement, Travaux
 from .serializers import InvestissementSerializer, TravauxDetailSerializer, TravauxListSerializer
+from .pagination import StandardResultsPagination
 
 
 class TravauxViewSet(viewsets.ModelViewSet):
     queryset = Travaux.objects.select_related("batiment", "investissement", "service_demandeur", "responsable_interne")
+    pagination_class = StandardResultsPagination
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
@@ -59,6 +61,7 @@ class TravauxViewSet(viewsets.ModelViewSet):
 class InvestissementViewSet(viewsets.ModelViewSet):
     serializer_class = InvestissementSerializer
     queryset = Investissement.objects.select_related("batiment", "service_pilote").all()
+    pagination_class = StandardResultsPagination
 
     def get_permissions(self):
         if self.request.method in permissions.SAFE_METHODS:
