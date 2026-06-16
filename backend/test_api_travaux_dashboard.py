@@ -21,7 +21,7 @@ class GestiBatAPIClient:
         """Authentifier et obtenir un token JWT"""
         try:
             response = self.session.post(
-                f"{self.base_url}/auth/login/",
+                f"{self.base_url}/auth/login/",              
                 json={"username": username, "password": password}
             )
             response.raise_for_status()

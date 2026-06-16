@@ -8,18 +8,18 @@ User = get_user_model()
 
 
 class LoginSerializer(serializers.Serializer):
-    identifiant = serializers.CharField()
+    username = serializers.CharField()
     password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
-        identifiant = attrs.get("identifiant")
+        username = attrs.get("username")
         password = attrs.get("password")
 
-        user = authenticate(username=identifiant, password=password)
+        user = authenticate(username=username, password=password)
 
-        # Allow login with email as identifiant.
+        # Allow login with email as username.
         if user is None:
-            user_obj = User.objects.filter(email=identifiant).first()
+            user_obj = User.objects.filter(email=username).first()
             if user_obj:
                 user = authenticate(username=user_obj.username, password=password)
 
