@@ -10,6 +10,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from django.contrib.auth import get_user_model
+from travaux.pagination import StandardResultsPagination
 from .models import Agent, AuditLog
 from .serializers import (
     LoginSerializer, 
@@ -66,6 +67,7 @@ class AgentViewSet(ModelViewSet):
     ordering = ["nom_complet"]
     filterset_fields = ["statut"]
     permission_classes = [IsAuthenticated, RoleBasedPermission]
+    pagination_class = StandardResultsPagination
     
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -147,6 +149,7 @@ class AuditLogViewSet(ModelViewSet):
     ordering_fields = ["timestamp", "action", "model_name", "user"]
     ordering = ["-timestamp"]
     filterset_fields = ["action", "model_name", "user"]
+    pagination_class = StandardResultsPagination
     
     def get_permissions(self):
         """Admin peut voir les logs, editeur aussi mais ses logs seulement"""
