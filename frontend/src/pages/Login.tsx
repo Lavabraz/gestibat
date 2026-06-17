@@ -16,17 +16,19 @@ export default function Login() {
     try {
       await login(username, password);
     } catch (err) {
-      setError('Identifiants invalides. Veuillez reessayer.');
+      setError('Identifiants invalides. Veuillez réessayer.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-4xl">
-        <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="bg-white rounded-lg shadow-lg p-8 border-4 border-[#005F5F]">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-slate-800 mb-6">Authentification</h1>
-            <Logo />
+            <h1 className="text-2xl font-bold text-[#005F5F] mb-6">Authentification</h1>
+            <div className="flex justify-center">
+              <Logo />
+            </div>
           </div>
 
           {error && (
@@ -37,28 +39,28 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-[#005F5F] mb-2">
                 Identifiant
               </label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-2 border-[#005F5F] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00AEEF] focus:border-transparent bg-white"
                 placeholder="Entrez votre identifiant"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
+              <label className="block text-sm font-medium text-[#005F5F] mb-2">
                 Mot de passe
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 border-2 border-[#005F5F] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00AEEF] focus:border-transparent bg-white"
                 placeholder="Entrez votre mot de passe"
                 required
               />
@@ -67,7 +69,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="w-full bg-[#005F5F] hover:bg-[#004B4B] text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
             >
               <span>{isLoading ? 'Connexion en cours...' : 'Entrer'}</span>
               {!isLoading && (
@@ -77,7 +79,7 @@ export default function Login() {
           </form>
 
           <div className="text-center mt-6">
-            <Link to="/forgot-password" className="text-blue-600 hover:text-blue-800 text-sm">
+            <Link to="/forgot-password" className="text-[#005F5F] hover:text-[#004B4B] text-sm">
               Mot de passe oublié ?
             </Link>
           </div>
