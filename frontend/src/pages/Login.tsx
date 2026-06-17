@@ -25,6 +25,7 @@ export default function Login() {
       <div className="flex-1 bg-[#d9d9d9] flex items-center justify-center p-[48px_24px] md:p-[36px_20px] sm:p-[28px_16px]">
         <div className="w-full max-w-[360px] flex flex-col items-center text-center">
           <Logo className="w-full max-w-[320px] h-auto mb-9 md:max-w-[260px] md:mb-7 sm:max-w-[200px] sm:mb-6" />
+          
           <h1 className="m-0 mb-7 text-[1.7rem] font-bold text-[#00707a] tracking-[0.01em] md:text-[1.45rem] md:mb-[22px] sm:text-[1.25rem] sm:mb-5">
             Authentification
           </h1>
@@ -44,7 +45,7 @@ export default function Login() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:shadow-[0_0_0_3px_rgba(0,112,122,0.25)] focus:bg-white"
+                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:ring-[3px] focus:ring-[#00707a] focus:ring-opacity-25 focus:bg-white"
                 placeholder="Entrez votre identifiant"
                 required
               />
@@ -58,7 +59,7 @@ export default function Login() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:shadow-[0_0_0_3px_rgba(0,112,122,0.25)] focus:bg-white"
+                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:ring-[3px] focus:ring-[#00707a] focus:ring-opacity-25 focus:bg-white"
                 placeholder="Entrez votre mot de passe"
                 required
               />
@@ -67,9 +68,10 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="mt-2 self-center px-[40px] py-[13px] border-none rounded-[999px] bg-[#00707a] text-white text-[1rem] font-bold transition-colors hover:bg-[#00565d] active:translate-y-[1px] sm:w-full sm:px-0"
+              className="mt-2 self-center px-[40px] py-[13px] border-none rounded-[999px] bg-[#00707a] text-white text-[1rem] font-bold cursor-pointer transition-colors hover:bg-[#00565d] active:translate-y-[1px] disabled:opacity-50 disabled:cursor-not-allowed sm:w-full sm:px-0 flex items-center justify-center space-x-2"
             >
-              {isLoading ? 'Connexion en cours...' : 'Entrer →'}
+              <span>{isLoading ? 'Connexion en cours...' : 'Entrer'}</span>
+              {!isLoading && <span className="text-xl">→</span>}
             </button>
           </form>
 
