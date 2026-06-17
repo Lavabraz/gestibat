@@ -13,10 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Rendre entrypoint.sh exécutable
-RUN chmod +x entrypoint.sh
-
 EXPOSE 8000
 
-# Utiliser entrypoint.sh comme point d'entrée
-ENTRYPOINT ["./entrypoint.sh"]
+# Commande unique avec gestion des erreurs : si une etape echoue, le conteneur crash
+CMD sh -c "  echo '⏳ Attente de PostgreSQL...' &&   while ! nc -z db 5432; do sleep 1; done &&   echo '✅ PostgreSQL est pret' &&   echo '📦 Application des migrations...' &&   python manage.py migrate || exit 1 &&   echo '🌱 Peuplement de la base...' &&   python manage.py seed_data || exit 1 &&   echo '🚀 Demarrage du backend sur 0.0.0.0:8000' &&   exec python manage.py runserver 0.0.0.0:8000"
