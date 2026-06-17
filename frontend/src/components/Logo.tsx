@@ -1,18 +1,9 @@
-export default function Logo() {
+export default function Logo({ className = "" }: { className?: string }) {
   return (
-    <div className="flex items-center justify-center space-x-4">
-      <div className="w-20 h-20 relative">
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <path d="M50 20 C30 20, 20 40, 20 60 C20 80, 40 90, 50 85 C60 90, 80 80, 80 60 C80 40, 70 20, 50 20 Z" fill="#00A859"/>
-          <path d="M50 30 C40 30, 35 45, 35 55 C35 65, 45 75, 50 70 C55 75, 65 65, 65 55 C65 45, 60 30, 50 30 Z" fill="#FBBF24"/>
-          <path d="M50 40 C45 40, 42 50, 42 58 C42 66, 50 70, 50 65 C50 60, 58 58, 58 50 C58 42, 55 40, 50 40 Z" fill="#00AEEF"/>
-        </svg>
-      </div>
-      <div className="flex flex-col">
-        <span className="text-2xl font-bold text-[#005F5F] tracking-wide">AMBERT</span>
-        <span className="text-xl font-medium text-[#005F5F] tracking-wider">LIVRADOIS</span>
-        <span className="text-xl font-medium text-[#005F5F] tracking-wider">FOREZ</span>
-      </div>
-    </div>
+    <img
+      className={className}
+      src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/82/ee/6a/82ee6a7c-4d4f-4038-a397-220e04d93d02/866e4103-e0a6-4025-b763-1c4bc7b28806/b0c86b74-b83e-475f-a18f-43c5ab72233c?sv=2025-01-05&spr=https&se=2026-06-17T12%3A48%3A38Z&skoid=c9baccad-3639-4379-a088-07b7e349293c&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-06-17T11%3A48%3A38Z&ske=2026-06-17T12%3A48%3A38Z&sks=b&skv=2025-01-05&sr=b&sp=r&sig=UZmS3KkrFHOo8FU6sqO8g%2BVOmEJxpgZAda6hV489usA%3D"
+      alt="Ambert Livradois Forez"
+    />
   );
 }
