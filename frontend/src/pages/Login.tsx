@@ -21,15 +21,13 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl">
-        <div className="bg-white rounded-lg shadow-lg p-8 border-4 border-[#005F5F]">
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-[#005F5F] mb-6">Authentification</h1>
-            <div className="flex justify-center">
-              <Logo />
-            </div>
-          </div>
+    <div className="min-h-screen bg-[#00707a] flex p-[22px] md:p-[14px] sm:p-[8px]">
+      <div className="flex-1 bg-[#d9d9d9] flex items-center justify-center p-[48px_24px] md:p-[36px_20px] sm:p-[28px_16px]">
+        <div className="w-full max-w-[360px] flex flex-col items-center text-center">
+          <Logo className="w-full max-w-[320px] h-auto mb-9 md:max-w-[260px] md:mb-7 sm:max-w-[200px] sm:mb-6" />
+          <h1 className="m-0 mb-7 text-[1.7rem] font-bold text-[#00707a] tracking-[0.01em] md:text-[1.45rem] md:mb-[22px] sm:text-[1.25rem] sm:mb-5">
+            Authentification
+          </h1>
 
           {error && (
             <div className="bg-red-50 text-red-600 p-3 rounded mb-6 text-sm text-center">
@@ -37,30 +35,30 @@ export default function Login() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-[#005F5F] mb-2">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-5 sm:gap-4">
+            <div className="w-full text-left flex flex-col gap-2">
+              <label className="text-[0.95rem] font-bold text-[#00707a]">
                 Identifiant
               </label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-[#005F5F] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00AEEF] focus:border-transparent bg-white"
+                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:shadow-[0_0_0_3px_rgba(0,112,122,0.25)] focus:bg-white"
                 placeholder="Entrez votre identifiant"
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-[#005F5F] mb-2">
+            <div className="w-full text-left flex flex-col gap-2">
+              <label className="text-[0.95rem] font-bold text-[#00707a]">
                 Mot de passe
               </label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-[#005F5F] rounded-md focus:outline-none focus:ring-2 focus:ring-[#00AEEF] focus:border-transparent bg-white"
+                className="w-full py-[11px] px-[14px] border-[1.5px] border-[#00707a] rounded-[8px] bg-[#d9d9d9] text-[#1a1a1a] placeholder:text-[#6b6b6b] focus:outline-none focus:shadow-[0_0_0_3px_rgba(0,112,122,0.25)] focus:bg-white"
                 placeholder="Entrez votre mot de passe"
                 required
               />
@@ -69,20 +67,18 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#005F5F] hover:bg-[#004B4B] text-white font-medium py-3 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+              className="mt-2 self-center px-[40px] py-[13px] border-none rounded-[999px] bg-[#00707a] text-white text-[1rem] font-bold transition-colors hover:bg-[#00565d] active:translate-y-[1px] sm:w-full sm:px-0"
             >
-              <span>{isLoading ? 'Connexion en cours...' : 'Entrer'}</span>
-              {!isLoading && (
-                <span className="text-xl">→</span>
-              )}
+              {isLoading ? 'Connexion en cours...' : 'Entrer →'}
             </button>
           </form>
 
-          <div className="text-center mt-6">
-            <Link to="/forgot-password" className="text-[#005F5F] hover:text-[#004B4B] text-sm">
-              Mot de passe oublié ?
-            </Link>
-          </div>
+          <Link
+            to="/forgot-password"
+            className="inline-block mt-[22px] text-[#00707a] font-bold text-[0.92rem] no-underline hover:underline"
+          >
+            Mot de passe oublié ?
+          </Link>
         </div>
       </div>
     </div>
