@@ -42,11 +42,11 @@ export default function SideNavBar() {
         <div className="absolute bottom-4 left-4 right-4">
           <div className="flex items-center gap-3 p-3 bg-white/10 rounded-input">
             <div className="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center font-bold">
-              {user.firstName?.charAt(0) || user.username.charAt(0)}
+              {user ? (user.firstName?.charAt(0) || user.username?.charAt(0) || '?') : '?'}
             </div>
             <div>
-              <p className="font-medium text-white">{user.firstName || user.username}</p>
-              <p className="text-xs text-white/70 capitalize">{user.role}</p>
+              <p className="font-medium text-white">{user ? (user.firstName || user.username || 'Utilisateur') : 'Utilisateur'}</p>
+              <p className="text-xs text-white/70 capitalize">{user?.role || 'Invite'}</p>
             </div>
           </div>
           <button
