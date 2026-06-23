@@ -9,6 +9,7 @@ import TravauxList from './pages/travaux/TravauxList';
 import TravauxDetail from './pages/travaux/TravauxDetail';
 import AgentsList from './pages/users/AgentsList';
 import InvestissementsList from './pages/travaux/InvestissementsList';
+import ContactsList from './pages/Contact';
 
 function Layout() {
   const location = useLocation();
@@ -36,6 +37,9 @@ function Layout() {
                 <a href="/patrimoine/batiments" className="text-slate-700 hover:text-primary transition-colors">
                   Patrimoine
                 </a>
+                <a href="/contacts" className="text-slate-700 hover:text-primary transition-colors">
+                  Contacts
+                </a>
                 <a href="/users/agents" className="text-slate-700 hover:text-primary transition-colors">
                   Utilisateurs
                 </a>
@@ -54,6 +58,7 @@ function Layout() {
           <Route path="/travaux/investissements" element={<ProtectedRoute><InvestissementsList /></ProtectedRoute>} />
           <Route path="/patrimoine/batiments" element={<ProtectedRoute><BatimentsList /></ProtectedRoute>} />
           <Route path="/patrimoine/batiments/:id" element={<ProtectedRoute><BatimentDetail /></ProtectedRoute>} />
+          <Route path="/contacts" element={<ProtectedRoute><ContactsList /></ProtectedRoute>} />
           <Route path="/users/agents" element={<ProtectedRoute><AgentsList /></ProtectedRoute>} />
         </Routes>
       </main>
