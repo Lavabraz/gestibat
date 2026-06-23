@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import KpiCard from '../components/dashboard/KpiCard';
 import AlertCard from '../components/dashboard/AlertCard';
@@ -14,6 +15,7 @@ export default function Dashboard() {
   const [activities, setActivities] = useState<Activity[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchDashboardData();
@@ -42,6 +44,19 @@ export default function Dashboard() {
     }
   };
 
+  const handleKpiClick = (index: number) => {
+    // 1st KPI card (index 0) goes to batiments
+    // Other KPI cards go to contacts with different filters
+    if (index === 0) {
+      navigate('/patrimoine/batiments');
+    } else {
+      // Map index to contact type filter
+      const filters = ['entreprise', 'artisan', 'fournisseur'];
+      const filterType = filters[index - 1] || 'entreprise';
+      navigate('/contacts?type=' + filterType);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -49,7 +64,7 @@ export default function Dashboard() {
         <SkeletonLoader type="card" count={4} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800 mb-4">Alertes</h2>
+            <h2 className="text-lg font-semibold text-slate-800 mb-4">Alertes recentes</h2>
             <SkeletonLoader type="list" count={3} />
           </div>
           <div>
@@ -80,16 +95,16 @@ export default function Dashboard() {
       <h1 className="text-2xl font-bold text-primary">Tableau de bord</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {kpis.map((kpi) => (
-          <KpiCard key={kpi.label} kpi={kpi} />
+        {kpis.map((kpi, index) => (
+          <div key={kpi.label} onClick={() => handleKpiClick(index)} style={{ cursor: 'pointer' }}>
+            <KpiCard kpi={kpi} />
+          </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-card-bg rounded-card p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">
-            Alertes recentes
-          </h2>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">Alertes recentes</h2>
           {alerts.length === 0 ? (
             <p className="text-slate-500 text-sm">Aucune alerte</p>
           ) : (
@@ -102,9 +117,7 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-card-bg rounded-card p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">
-            Activite recente
-          </h2>
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">Activite recente</h2>
           {activities.length === 0 ? (
             <p className="text-slate-500 text-sm">Aucune activite</p>
           ) : (
