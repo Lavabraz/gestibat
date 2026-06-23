@@ -32,25 +32,25 @@ export default function Dashboard() {
         },
       });
 
-      const data = response.data;
-      setKpis(data.kpis || []);
-      setAlerts(data.alerts || []);
-      setActivities(data.recentActivities || []);
+      const data = response.data || {};
+      setKpis(Array.isArray(data.kpis) ? data.kpis : []);
+      setAlerts(Array.isArray(data.alerts) ? data.alerts : []);
+      setActivities(Array.isArray(data.recentActivities) ? data.recentActivities : []);
     } catch (err) {
       console.error('Failed to fetch dashboard data:', err);
       setError('Echec du chargement des donnees');
+      setKpis([]);
+      setAlerts([]);
+      setActivities([]);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleKpiClick = (index: number) => {
-    // 1st KPI card (index 0) goes to batiments
-    // Other KPI cards go to contacts with different filters
     if (index === 0) {
       navigate('/patrimoine/batiments');
     } else {
-      // Map index to contact type filter
       const filters = ['entreprise', 'artisan', 'fournisseur'];
       const filterType = filters[index - 1] || 'entreprise';
       navigate('/contacts?type=' + filterType);
@@ -95,7 +95,7 @@ export default function Dashboard() {
       <h1 className="text-2xl font-bold text-primary">Tableau de bord</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {kpis.map((kpi, index) => (
+        {Array.isArray(kpis) && kpis.map((kpi, index) => (
           <div key={kpi.label} onClick={() => handleKpiClick(index)} style={{ cursor: 'pointer' }}>
             <KpiCard kpi={kpi} />
           </div>
@@ -104,12 +104,14 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-card-bg rounded-card p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Alertes recentes</h2>
-          {alerts.length === 0 ? (
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">
+            Alertes recentes
+          </h2>
+          {Array.isArray(alerts) && alerts.length === 0 ? (
             <p className="text-slate-500 text-sm">Aucune alerte</p>
           ) : (
             <div className="space-y-3">
-              {alerts.slice(0, 3).map((alert) => (
+              {Array.isArray(alerts) && alerts.slice(0, 3).map((alert) => (
                 <AlertCard key={alert.id} alert={alert} />
               ))}
             </div>
@@ -117,12 +119,14 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-card-bg rounded-card p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Activite recente</h2>
-          {activities.length === 0 ? (
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">
+            Activite recente
+          </h2>
+          {Array.isArray(activities) && activities.length === 0 ? (
             <p className="text-slate-500 text-sm">Aucune activite</p>
           ) : (
             <div className="space-y-3">
-              {activities.slice(0, 5).map((activity) => (
+              {Array.isArray(activities) && activities.slice(0, 5).map((activity) => (
                 <ActivityCard key={activity.id} activity={activity} />
               ))}
             </div>
