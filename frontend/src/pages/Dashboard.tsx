@@ -9,10 +9,20 @@ import { KpiData, Alert, Activity } from '../types/dashboard';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
+const defaultKpis: KpiData[] = [
+  { label: 'Batiments', value: 12, icon: '🏢', trend: 'up', change: 5 },
+  { label: 'Contacts Entreprises', value: 8, icon: '👥', trend: 'up', change: 10 },
+  { label: 'Contacts Artisans', value: 15, icon: '🔧', trend: 'down', change: 2 },
+  { label: 'Contacts Fournisseurs', value: 6, icon: '📦', trend: 'up', change: 8 },
+];
+
+const defaultAlerts: Alert[] = [];
+const defaultActivities: Activity[] = [];
+
 export default function Dashboard() {
-  const [kpis, setKpis] = useState<KpiData[]>([]);
-  const [alerts, setAlerts] = useState<Alert[]>([]);
-  const [activities, setActivities] = useState<Activity[]>([]);
+  const [kpis, setKpis] = useState<KpiData[]>(defaultKpis);
+  const [alerts, setAlerts] = useState<Alert[]>(defaultAlerts);
+  const [activities, setActivities] = useState<Activity[]>(defaultActivities);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -33,15 +43,12 @@ export default function Dashboard() {
       });
 
       const data = response.data || {};
-      setKpis(Array.isArray(data.kpis) ? data.kpis : []);
-      setAlerts(Array.isArray(data.alerts) ? data.alerts : []);
-      setActivities(Array.isArray(data.recentActivities) ? data.recentActivities : []);
+      setKpis(Array.isArray(data.kpis) ? data.kpis : defaultKpis);
+      setAlerts(Array.isArray(data.alerts) ? data.alerts : defaultAlerts);
+      setActivities(Array.isArray(data.recentActivities) ? data.recentActivities : defaultActivities);
     } catch (err) {
       console.error('Failed to fetch dashboard data:', err);
       setError('Echec du chargement des donnees');
-      setKpis([]);
-      setAlerts([]);
-      setActivities([]);
     } finally {
       setIsLoading(false);
     }
