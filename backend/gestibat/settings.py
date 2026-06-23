@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "travaux",
     "energie",
     "users",
+    "contacts",
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,6 @@ WSGI_APPLICATION = "gestibat.wsgi.application"
 db_engine = config("DB_ENGINE", default="")
 
 if db_engine == "django.db.backends.sqlite3":
-    # SQLite configuration for local development
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -66,7 +66,6 @@ if db_engine == "django.db.backends.sqlite3":
         }
     }
 else:
-    # PostgreSQL configuration
     db_url = config("DATABASE_URL", default="")
     if db_url:
         parsed = urlparse(db_url)
