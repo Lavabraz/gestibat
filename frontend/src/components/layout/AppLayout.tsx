@@ -4,12 +4,12 @@ import TopSearchBar from './TopSearchBar';
 
 export default function AppLayout() {
   return (
-    <div className="min-h-screen bg-[#e0e0e0]">
-      <div className="flex">
+    <div style={{ minHeight: '100vh', backgroundColor: '#d9d9d9' }}>
+      <div style={{ display: 'flex' }}>
         <SideNavBar />
-        <main className="flex-1 p-6">
+        <main style={{ flex: 1, padding: '1.5rem' }}>
           <TopSearchBar />
-          <div className="mt-6">
+          <div style={{ marginTop: '1.5rem' }}>
             <Outlet />
           </div>
         </main>
