@@ -25,19 +25,18 @@ export default function KpiCard({ kpi }: KpiCardProps) {
     <div style={{
       backgroundColor: '#e2e2e2',
       borderRadius: '20px',
-      padding: '1.5rem',
+      padding: '24px',
       boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
       cursor: 'pointer',
-      transition: 'box-shadow 0.2s',
     }}>
-      <div style={{ display: 'flex', items: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-        <p style={{ fontSize: '0.875rem', color: '#64748b' }}>{kpi.label}</p>
-        {kpi.icon && <span style={{ fontSize: '1.5rem' }}>{kpi.icon}</span>}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>{kpi.label}</p>
+        {kpi.icon && <span style={{ fontSize: '24px' }}>{kpi.icon}</span>}
       </div>
-      <div style={{ display: 'flex', items: 'baseline', gap: '0.5rem' }}>
-        <h3 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#007179' }}>{kpi.value}</h3>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+        <h3 style={{ fontSize: '30px', fontWeight: 'bold', color: '#007179', margin: 0 }}>{kpi.value}</h3>
         {kpi.trend && (
-          <span style={{ fontSize: '0.875rem', fontWeight: '500', color: getTrendColor() }}>
+          <span style={{ fontSize: '14px', fontWeight: '500', color: getTrendColor() }}>
             {getTrendIcon()} {kpi.change}%
           </span>
         )}
